@@ -1,0 +1,13 @@
+# robots.txt for gozi.my.id
+User-agent: *
+Allow: /
+
+# Block crawlers from specific folders
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://gozi.my.id/sitemap.xml 

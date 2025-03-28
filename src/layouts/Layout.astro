@@ -1,0 +1,909 @@
+---
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/montserrat/600.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '../styles/global.css';
+import '../styles/parallax.css';
+import '../styles/scroll-animations.css';
+import '../styles/animations.css';
+import '../styles/3d.css';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const { 
+  title, 
+  description = "Muhammad Faris Gozi's portfolio showcasing backend development projects and AI expertise.",
+  image = "/images/og-image.jpg",
+  canonicalURL = Astro.url.href
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Muhammad Faris Gozi" />
+    <meta name="keywords" content="backend developer, AI, machine learning, Python, Express, Laravel, Flutter, portfolio, web development" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url.href} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    
+    <!-- Mobile Web App -->
+    <meta name="theme-color" content="#9d4edd" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Font loading optimization -->
+    <style>
+      /* Mendefinisikan font-face pada halaman utama */
+      @font-face {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/poppins-latin-400-normal.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-036F, U+0400-045F;
+      }
+      @font-face {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/fonts/poppins-latin-700-normal.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-036F, U+0400-045F;
+      }
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/montserrat-latin-400-normal.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-036F, U+0400-045F;
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/inter-latin-400-normal.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-036F, U+0400-045F;
+      }
+    </style>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Muhammad Faris Gozi",
+        "url": "https://gozi.my.id",
+        "sameAs": [
+          "https://github.com/farisgozi",
+          "https://id.linkedin.com/in/faris-gozi-a297a62a1",
+          "https://twitter.com/farisgozie"
+        ],
+        "jobTitle": "Backend Developer & AI Enthusiast",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "PT. Implementasi Teknologi Digital"
+        },
+        "description": "Backend Developer and AI Enthusiast with expertise in Python, Laravel, Express, and Flutter"
+      }
+    </script>
+    
+    <!-- Preconnect to third-party domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/images/favicon-192.png" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="min-h-screen transition-colors duration-500 font-sans">
+    <!-- Interactive Background Elements -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <!-- Animated blobs -->
+      <div class="absolute w-96 h-96 top-0 -left-48 bg-primary-500/20 rounded-full filter blur-3xl animate-float opacity-50"></div>
+      <div class="absolute w-96 h-96 bottom-0 -right-48 bg-secondary-500/20 rounded-full filter blur-3xl animate-float-reverse opacity-50"></div>
+      
+      <!-- Grain texture overlay -->
+      <div class="fixed inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none"></div>
+      
+      <!-- Dynamic grid lines -->
+      <div class="fixed inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+    </div>
+    
+    <!-- Animated progress bar -->
+    <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400 transform origin-left scale-x-0 transition-transform" id="scroll-progress"></div>
+    
+    <div class="relative z-10">
+      <header class="relative">
+        <nav class="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-white/10 backdrop-blur-md transition-all duration-300">
+          <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+              <!-- Logo -->
+              <a href="/#home" class="group relative flex items-center space-x-2">
+                <div class="relative overflow-hidden rounded-lg h-10 w-10 bg-gradient-to-br from-primary-500 to-secondary-500 p-0.5 shadow-lg transition-all duration-300 group-hover:shadow-primary-500/30 group-hover:shadow-lg">
+                  <div class="absolute inset-0 bg-gradient-to-br from-primary-500 to-secondary-500 animate-gradient-rotate"></div>
+                  <div class="absolute inset-0.5 rounded-md bg-white dark:bg-gray-900 flex items-center justify-center font-bold text-lg text-primary-500">MF</div>
+                </div>
+                <span class="text-xl font-bold text-gradient">Faris Gozi</span>
+              </a>
+              
+              <!-- Desktop Nav Menu -->
+              <div class="hidden md:flex items-center space-x-1">
+                <a href="/#projects" class="group px-4 py-2 relative">
+                  <span class="relative z-10 text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">Projects</span>
+                  <span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary-500/70 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+                </a>
+                <a href="/#experience" class="group px-4 py-2 relative">
+                  <span class="relative z-10 text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">Experience</span>
+                  <span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary-500/70 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+                </a>
+                <a href="/#certificates" class="group px-4 py-2 relative">
+                  <span class="relative z-10 text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">Certificates</span>
+                  <span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary-500/70 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+                </a>
+                <a href="/#contact" class="group px-4 py-2 relative">
+                  <span class="relative z-10 text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">Contact</span>
+                  <span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary-500/70 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+                </a>
+                
+                <!-- Theme toggle button with animation -->
+                <button id="theme-toggle" class="ml-4 p-2 rounded-full bg-white/10 dark:bg-black/20 text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 dark:border-gray-800">
+                  <!-- Sun icon for dark mode -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                  <!-- Moon icon for light mode -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Mobile menu button -->
+              <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 active:scale-95 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Mobile menu -->
+          <div id="mobile-menu" class="md:hidden fixed inset-0 z-50 bg-white/95 dark:bg-gray-900/98 backdrop-blur-xl transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="flex flex-col h-full justify-center items-center space-y-8 p-6 relative z-10">
+              <button id="mobile-menu-close" class="absolute top-6 right-6 p-3 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 active:scale-95 shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              
+              <div class="flex flex-col items-center space-y-6">
+                <a href="/#home" class="mobile-menu-item text-3xl font-bold text-primary-600 dark:text-primary-400 relative group">
+                  <span>Home</span>
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="/#projects" class="mobile-menu-item text-3xl font-bold text-gray-700 dark:text-gray-300 relative group">
+                  <span>Projects</span>
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="/#experience" class="mobile-menu-item text-3xl font-bold text-gray-700 dark:text-gray-300 relative group">
+                  <span>Experience</span>
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="/#certificates" class="mobile-menu-item text-3xl font-bold text-gray-700 dark:text-gray-300 relative group">
+                  <span>Certificates</span>
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="/#contact" class="mobile-menu-item text-3xl font-bold text-gray-700 dark:text-gray-300 relative group">
+                  <span>Contact</span>
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+              </div>
+              
+              <button id="mobile-theme-toggle" class="mt-8 p-4 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow-md hover:shadow-lg transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="pt-20">
+        <slot />
+      </main>
+
+      <footer class="py-12 mt-16 border-t border-gray-200 dark:border-gray-800 relative overflow-hidden">
+        <!-- Background decoration for footer -->
+        <div class="absolute inset-0 bg-gradient-to-t from-primary-50/20 to-transparent dark:from-primary-900/10 dark:to-transparent -z-10"></div>
+        
+        <div class="container mx-auto px-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Logo and brief intro -->
+            <div class="space-y-4">
+              <a href="/#home" class="flex items-center space-x-2">
+                <span class="text-xl font-bold text-gray-900 dark:text-white">Faris Gozi</span>
+              </a>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">
+                Backend Developer & AI Enthusiast focused on creating innovative solutions using modern technologies.
+              </p>
+            </div>
+            
+            <!-- Quick links -->
+            <div class="space-y-4">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Quick Links</h3>
+              <div class="flex flex-col space-y-2">
+                <a href="/#projects" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projects</a>
+                <a href="/#experience" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Experience</a>
+                <a href="/#certificates" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Certificates</a>
+                <a href="/#contact" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+              </div>
+            </div>
+            
+            <!-- Social links -->
+            <div class="space-y-4">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Connect</h3>
+              <div class="flex space-x-4">
+                <a href="https://github.com/farisgozi" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 transform hover:scale-110">
+              <span class="sr-only">GitHub</span>
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+              </svg>
+            </a>
+                <a href="https://id.linkedin.com/in/faris-gozi-a297a62a1" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 transform hover:scale-110">
+              <span class="sr-only">LinkedIn</span>
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+                <a href="https://instagram.com/yeoziy" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 transform hover:scale-110">
+              <span class="sr-only">Instagram</span>
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                  </svg>
+            </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+            <p class="text-center text-sm text-gray-600 dark:text-gray-400">&copy; {new Date().getFullYear()} Muhammad Faris Gozi. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Theme toggle functionality
+      function setupThemeToggle() {
+        const themeToggleButtons = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
+      const htmlElement = document.documentElement;
+      
+      // Check for saved theme preference or use system preference
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        htmlElement.classList.add('dark');
+      }
+      
+      // Toggle theme on button click
+        themeToggleButtons.forEach(button => {
+          button.addEventListener('click', () => {
+        htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+            
+            // Add animation to the toggle button
+            button.classList.add('animate-spin');
+            setTimeout(() => {
+              button.classList.remove('animate-spin');
+            }, 500);
+          });
+        });
+      }
+      
+      // Mobile menu functionality
+      function setupMobileMenu() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+        
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.classList.add('overflow-hidden');
+            document.documentElement.classList.add('overflow-hidden');
+            
+            // Animasi transisi masuk
+            mobileMenu.style.opacity = '0';
+            setTimeout(() => {
+              mobileMenu.style.opacity = '1';
+            }, 50);
+          });
+          
+          const closeMenu = () => {
+            // Animasi transisi keluar
+            mobileMenu.style.opacity = '0';
+            
+            setTimeout(() => {
+              mobileMenu.classList.add('translate-x-full');
+              document.body.classList.remove('overflow-hidden');
+              document.documentElement.classList.remove('overflow-hidden');
+              setTimeout(() => {
+                mobileMenu.style.opacity = '1';
+              }, 300);
+            }, 200);
+          };
+          
+          mobileMenuClose?.addEventListener('click', closeMenu);
+          
+          mobileMenuItems.forEach(item => {
+            item.addEventListener('click', closeMenu);
+          });
+          
+          // Juga tutup dengan escape key
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+              closeMenu();
+            }
+          });
+        }
+      }
+
+      // Scroll progress indicator
+      function setupScrollProgress() {
+        const scrollProgress = document.getElementById('scroll-progress');
+        
+        if (scrollProgress) {
+          // Gunakan requestAnimationFrame untuk menghindari scroll-linked effect warning
+          let ticking = false;
+          window.addEventListener('scroll', () => {
+            if (!ticking) {
+              window.requestAnimationFrame(() => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                
+                scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
+                ticking = false;
+              });
+              ticking = true;
+            }
+          });
+        }
+      }
+      
+      // Memperbaiki navigasi scroll
+      function setupSmoothNavigation() {
+        // Mendapatkan semua link navigasi
+        const navLinks = document.querySelectorAll('a[href^="/#"]');
+        
+        // Menambahkan event listener ke setiap link
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            // Mendapatkan target dari href (misalnya /#skills menjadi skills)
+            const element = e.currentTarget as HTMLAnchorElement;
+            const href = element.getAttribute('href') || '';
+            const targetId = href.split('#')[1];
+            const targetElement = document.getElementById(targetId);
+            
+            // Jika elemen target ditemukan, lakukan scroll dengan smooth
+            if (targetElement) {
+              e.preventDefault();
+              
+              // Hitung offset untuk header
+              const headerOffset = 80;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              
+              // Scroll ke posisi dengan animasi smooth
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+              
+              // Jika menu mobile terbuka, tutup
+              const mobileMenu = document.getElementById('mobile-menu');
+              if (mobileMenu && !mobileMenu.classList.contains('translate-x-full')) {
+                document.getElementById('mobile-menu-close')?.click();
+              }
+            }
+          });
+        });
+      }
+      
+      // Panggil fungsi setup navigasi setelah DOM loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        setupThemeToggle();
+        setupMobileMenu();
+        setupScrollProgress();
+        setupSmoothNavigation();
+      });
+
+      // Handle parallax effect on mouse move
+      document.addEventListener('DOMContentLoaded', function() {
+        let parallaxElements = document.querySelectorAll('.parallax-element');
+        let ticking = false;
+        
+        // Handle interactive elements based on scroll position
+        const scrollElements = document.querySelectorAll('[data-scroll]');
+        const scrollRevealElements = document.querySelectorAll('[data-animate]');
+        
+        // Intersection Observer for reveal animations
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            // Add class when element is in view
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          });
+        }, {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+        
+        // Observe all elements with data-animate attribute
+        scrollRevealElements.forEach(element => {
+          observer.observe(element);
+          
+          // Calculate delay if provided in the style attribute
+          const delay = (element as HTMLElement).style.getPropertyValue('--delay') || 
+                    element.getAttribute('style')?.match(/--delay:\s*(\d+)/) || 0;
+          if (delay) {
+            (element as HTMLElement).style.transitionDelay = `${delay}ms`;
+          }
+        });
+        
+        // Check for mobile/touch devices
+        const isTouchDevice = () => {
+          return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        };
+        
+        // Only add mouse move parallax on non-touch devices
+        if (!isTouchDevice()) {
+          document.addEventListener('mousemove', (e: Event) => {
+            const mouseEvent = e as MouseEvent;
+            if (!ticking) {
+              window.requestAnimationFrame(() => {
+                // Calculate mouse position relative to center of screen
+                const mouseX = mouseEvent.clientX / window.innerWidth - 0.5;
+                const mouseY = mouseEvent.clientY / window.innerHeight - 0.5;
+                
+                // Apply parallax effect to elements
+                parallaxElements.forEach(el => {
+                  const speed = parseFloat(el.getAttribute('data-speed') || '5');
+                  const x = -mouseX * speed;
+                  const y = -mouseY * speed;
+                  (el as HTMLElement).style.transform = `translate3d(${x}px, ${y}px, 0)`;
+                });
+                
+                ticking = false;
+              });
+              
+              ticking = true;
+            }
+          });
+        }
+        
+        // Create scroll progress indicator
+        const scrollProgress = document.querySelector('.scroll-progress');
+        
+        // Gunakan requestAnimationFrame untuk menghindari scroll-linked effect warning
+        let scrollTicking = false;
+        window.addEventListener('scroll', () => {
+          if (scrollProgress && !scrollTicking) {
+            window.requestAnimationFrame(() => {
+              const totalHeight = document.body.scrollHeight - window.innerHeight;
+              const progress = (window.pageYOffset / totalHeight) * 100;
+              (scrollProgress as HTMLElement).style.width = `${progress}%`;
+              scrollTicking = false;
+            });
+            scrollTicking = true;
+          }
+        });
+        
+        // 3D Card Effect - Apply to elements with hover-3d class
+        const cards = document.querySelectorAll('.hover-3d');
+        
+        cards.forEach(card => {
+          if (!isTouchDevice()) {
+            card.addEventListener('mousemove', (e: Event) => {
+              const mouseEvent = e as MouseEvent;
+              const rect = card.getBoundingClientRect();
+              const x = mouseEvent.clientX - rect.left;
+              const y = mouseEvent.clientY - rect.top;
+              
+              const centerX = rect.width / 2;
+              const centerY = rect.height / 2;
+              
+              const rotateX = (y - centerY) / 10;
+              const rotateY = (centerX - x) / 10;
+              
+              (card as HTMLElement).style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+              (card as HTMLElement).style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+          }
+        });
+        
+        // Responsive adjustments for mobile 
+        function checkMobile() {
+          const isMobile = window.innerWidth < 768;
+          
+          if (isMobile) {
+            // Reduce intensity of animations on mobile
+            document.documentElement.style.setProperty('--scale-factor', '0.7');
+            
+            // Make parallax elements static on mobile for better performance
+            parallaxElements.forEach(el => {
+              (el as HTMLElement).style.transform = 'none';
+            });
+          } else {
+            document.documentElement.style.setProperty('--scale-factor', '1');
+          }
+        }
+        
+        // Check on load and resize
+        window.addEventListener('resize', checkMobile);
+        checkMobile();
+      });
+
+      // Animated cursor following typing
+      document.addEventListener('DOMContentLoaded', function() {
+        // Definisikan tipe untuk window dengan typeStartTime
+        interface ExtendedWindow extends Window {
+          typeStartTime?: number;
+        }
+        const extWindow = window as ExtendedWindow;
+        
+        // Get the cursor element
+        const cursor = document.querySelector('.typing-cursor') as HTMLElement | null;
+        const codeLines = document.querySelectorAll('.animate-typing code span');
+        
+        if (cursor && codeLines.length > 0) {
+          // Set initial position
+          cursor.style.left = '8px';
+          cursor.style.top = '24px';
+          
+          let activeLine = 0;
+          let currentLineEnded = false;
+          
+          // Function to move cursor to specific position
+          function moveCursor(x: number, y: number): void {
+            if (cursor) {
+              cursor.style.left = x + 'px';
+              cursor.style.top = y + 'px';
+            }
+          }
+          
+          // Function to follow typing on active line
+          function followTyping(): void {
+            if (activeLine >= codeLines.length) return;
+            
+            const line = codeLines[activeLine] as HTMLElement;
+            const lineRect = line.getBoundingClientRect();
+            const preRect = (line.closest('pre') as HTMLElement).getBoundingClientRect();
+            
+            // Calculate width percentage based on animation time
+            const delayMs = parseInt(line.style.animationDelay || '0');
+            const currentTime = Date.now();
+            
+            // Initialize typeStartTime if needed
+            if (typeof extWindow.typeStartTime === 'undefined') {
+              extWindow.typeStartTime = Date.now();
+            }
+            
+            const startTime = (extWindow.typeStartTime || Date.now()) + delayMs;
+            const progress = Math.min(1, Math.max(0, (currentTime - startTime) / 700)); // 700ms is typing-span duration
+            
+            // Calculate position based on typing progress
+            const width = line.scrollWidth * progress;
+            const relativePosX = 8 + width; // 8px padding + typing width
+            const relativePosY = lineRect.top - preRect.top + 9; // Center cursor vertically on line
+            
+            // Move cursor
+            moveCursor(relativePosX, relativePosY);
+            
+            // Check if line typing completed
+            if (progress >= 1 && !currentLineEnded) {
+              currentLineEnded = true;
+              setTimeout(() => {
+                activeLine++;
+                currentLineEnded = false;
+              }, 100);
+            }
+            
+            // Request next frame
+            requestAnimationFrame(followTyping);
+          }
+          
+          // Start animation tracking
+          extWindow.typeStartTime = Date.now();
+          followTyping();
+        }
+      });
+
+      // 3D Parallax effect for higher-end devices
+      class Parallax3D {
+        layers: NodeListOf<Element>;
+        container: Element | null;
+        isEnabled: boolean;
+        ticking: boolean;
+        lastMouseX: number;
+        lastMouseY: number;
+        
+        constructor() {
+          this.layers = document.querySelectorAll('.parallax-layer');
+          this.container = document.querySelector('.parallax-container-3d');
+          this.isEnabled = window.innerWidth > 768; // Only enable on desktop
+          this.ticking = false;
+          this.lastMouseX = 0;
+          this.lastMouseY = 0;
+          
+          this.init();
+        }
+        
+        init() {
+          if (!this.isEnabled || !this.container) return;
+          
+          // Add event listeners dengan throttling untuk menghindari scroll-linked effect warning
+          document.addEventListener('mousemove', this.handleMouseMove.bind(this), { passive: true });
+          window.addEventListener('resize', this.handleResize.bind(this), { passive: true });
+        }
+        
+        handleMouseMove(e: MouseEvent) {
+          if (!this.isEnabled) return;
+          
+          // Simpan posisi mouse terakhir
+          this.lastMouseX = e.clientX / window.innerWidth - 0.5;
+          this.lastMouseY = e.clientY / window.innerHeight - 0.5;
+          
+          if (!this.ticking) {
+            window.requestAnimationFrame(() => {
+              this.updateLayers(this.lastMouseX, this.lastMouseY);
+              this.ticking = false;
+            });
+            
+            this.ticking = true;
+          }
+        }
+        
+        updateLayers(mouseX: number, mouseY: number) {
+          this.layers.forEach((layer: Element) => {
+            if (layer instanceof HTMLElement) {
+              const depth = parseFloat(getComputedStyle(layer).getPropertyValue('--depth') || '0');
+              const translateX = mouseX * depth * 50;
+              const translateY = mouseY * depth * 50;
+              
+              layer.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
+            }
+          });
+        }
+        
+        handleResize() {
+          this.isEnabled = window.innerWidth > 768;
+          
+          if (!this.isEnabled) {
+            // Reset positions on mobile
+            this.layers.forEach((layer: Element) => {
+              if (layer instanceof HTMLElement) {
+                layer.style.transform = '';
+              }
+            });
+          }
+        }
+      }
+      
+      // Run once DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        new Parallax3D();
+        
+        // Init scroll reveal for 3D elements
+        const scroll3DElements = document.querySelectorAll('.scroll-reveal-3d');
+        let visibilityTicking = false;
+        
+        function checkVisibility() {
+          scroll3DElements.forEach(element => {
+            const position = element.getBoundingClientRect();
+            
+            // Check if element is in viewport
+            if (position.top < window.innerHeight * 0.8 && position.bottom >= 0) {
+              element.classList.add('visible');
+            }
+          });
+          
+          visibilityTicking = false;
+        }
+        
+        // Check on scroll with requestAnimationFrame untuk menghindari scroll-linked effect warning
+        window.addEventListener('scroll', () => {
+          if (!visibilityTicking) {
+            visibilityTicking = true;
+            requestAnimationFrame(checkVisibility);
+          }
+        }, { passive: true });
+        
+        // Check on init
+        requestAnimationFrame(checkVisibility);
+      });
+      
+      // Performance optimization for 3D elements
+      window.addEventListener('load', () => {
+        // Mark the main content as loaded
+        document.body.classList.add('loaded');
+        
+        // Throttle intensive animations on slower devices
+        const checkPerformance = () => {
+          let timeStart = performance.now();
+          let frames = 0;
+          
+          const measureFrameRate = () => {
+            frames++;
+            
+            if (performance.now() - timeStart >= 1000) {
+              const fps = frames;
+              
+              // If framerate is low, disable some intensive effects
+              if (fps < 30) {
+                document.body.classList.add('reduced-motion');
+                document.querySelectorAll('.floating-cube').forEach((cube: Element) => {
+                  if (cube instanceof HTMLElement) {
+                    cube.style.animation = 'cube-rotate 30s infinite linear';
+                  }
+                });
+              }
+              
+              return;
+            }
+            
+            window.requestAnimationFrame(measureFrameRate);
+          };
+          
+          window.requestAnimationFrame(measureFrameRate);
+        };
+        
+        // Run performance check after a short delay
+        setTimeout(checkPerformance, 1000);
+      });
+
+      // Register service worker for offline support
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+              console.error('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
+
+    <style>
+      /* Grid pattern */
+      .bg-grid-pattern {
+        background-image: 
+          linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px;
+      }
+      
+      /* Noise effect */
+      .bg-noise {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+      
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      .animate-spin {
+        animation: spin 0.5s ease-in-out;
+      }
+      
+      /* Mobile menu item hover effect */
+      .mobile-menu-item {
+        display: inline-block;
+        padding: 0.75rem 0;
+        margin: 0.25rem 0;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      
+      .mobile-menu-item:hover {
+        transform: translateX(5px);
+        color: theme('colors.primary.500');
+      }
+      
+      .mobile-menu-item::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: theme('colors.primary.500');
+        transition: width 0.3s ease;
+      }
+      
+      .mobile-menu-item:hover::after {
+        width: 100%;
+      }
+      
+      /* Prevent content from being clickable when menu is open */
+      .overflow-hidden {
+        overflow: hidden !important;
+        touch-action: none;
+        height: 100% !important;
+      }
+      
+      /* Custom safe area insets for mobile devices */
+      @supports (padding: max(0px)) {
+        #mobile-menu-button, #mobile-menu-close {
+          padding-right: max(0.75rem, env(safe-area-inset-right));
+          padding-left: max(0.75rem, env(safe-area-inset-left));
+        }
+        
+        #mobile-menu {
+          padding-left: env(safe-area-inset-left);
+          padding-right: env(safe-area-inset-right);
+          padding-top: max(env(safe-area-inset-top), 1rem);
+          padding-bottom: max(env(safe-area-inset-bottom), 1rem);
+        }
+      }
+    </style>
+  </body>
+</html>

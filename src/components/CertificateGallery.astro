@@ -1,0 +1,292 @@
+---
+// Certificate Gallery Component
+// Menampilkan sertifikat dalam tampilan grid responsif dengan efek zoom lightbox
+
+interface Certificate {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  imageSrc: string;
+  altText: string;
+}
+
+const certificates: Certificate[] = [
+  {
+    id: "cert-1",
+    title: "OSIS Certification",
+    issuer: "Organisasi Siswa Intra Sekolah",
+    date: "2022",
+    imageSrc: "/images/osis.png",
+    altText: "OSIS Certification"
+  },
+  {
+    id: "cert-2",
+    title: "Head of AI Division",
+    issuer: "Organisasi Ekstrakurikuler Jurusan",
+    date: "2023",
+    imageSrc: "/images/orens.png",
+    altText: "Head of AI Division"
+  },
+  {
+    id: "cert-3",
+    title: "OPN Certification",
+    issuer: "Piagam Olimpiade Bidang Bahasa Inggris",
+    date: "2022",
+    imageSrc: "/images/opn.jpg",
+    altText: "OPN Certification"
+  },
+  {
+    id: "cert-4",
+    title: "Internship Certificate",
+    issuer: "PT. Implementasi Teknologi Digital",
+    date: "2024",
+    imageSrc: "/images/magang.jpg",
+    altText: "Internship Certificate"
+  }
+];
+---
+
+<section class="certificate-gallery py-12 relative">
+  <div class="container mx-auto px-4 md:px-6">
+    <h2 class="text-3xl md:text-4xl font-bold mb-2 text-gray-900 dark:text-white text-center">
+      Certificates
+    </h2>
+    <p class="text-lg text-gray-600 dark:text-gray-400 text-center mb-10">
+      Professional certifications and achievements
+    </p>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {certificates.map((certificate) => (
+        <div 
+          class="certificate-card group" 
+          data-certificate-id={certificate.id}
+        >
+          <div class="relative overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+            <!-- Thumbnail preview with hover effect -->
+            <div class="certificate-preview overflow-hidden relative">
+              <img 
+                src={certificate.imageSrc} 
+                alt={certificate.altText} 
+                class="w-full h-48 object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                <span class="text-white font-medium px-4 py-2 rounded-full bg-primary-500/80 backdrop-blur-sm">
+                  View Certificate
+                </span>
+              </div>
+            </div>
+            
+            <!-- Certificate info -->
+            <div class="p-4 flex flex-col flex-grow">
+              <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-1">
+                {certificate.title}
+              </h3>
+              <p class="text-sm text-primary-600 dark:text-primary-400 mb-2">
+                {certificate.issuer}
+              </p>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-auto">
+                {certificate.date}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Certificate Lightbox Modal -->
+  <div id="certificate-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 opacity-0 pointer-events-none transition-opacity duration-300">
+    <button id="close-modal" class="absolute top-4 right-4 text-white p-2 rounded-full bg-black/20 hover:bg-black/40 transition-colors z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    
+    <div class="max-w-5xl mx-auto p-4 relative">
+      <div class="modal-content bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-2xl">
+        <img id="modal-image" src="" alt="Certificate" class="w-full h-auto object-contain max-h-[80vh]" />
+        <div class="p-4">
+          <h3 id="modal-title" class="font-bold text-xl text-gray-900 dark:text-white"></h3>
+          <p id="modal-issuer" class="text-primary-600 dark:text-primary-400"></p>
+          <p id="modal-date" class="text-sm text-gray-500 dark:text-gray-400 mt-2"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .certificate-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .certificate-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  #certificate-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Add shine effect to cards */
+  .certificate-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+    transform: skewX(-25deg);
+    z-index: 1;
+    transition: 0.75s;
+    opacity: 0;
+  }
+  
+  .certificate-card:hover .certificate-preview::before {
+    animation: shine 0.75s;
+    opacity: 1;
+  }
+  
+  @keyframes shine {
+    100% {
+      left: 125%;
+    }
+  }
+  
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .certificate-card,
+    .certificate-card:hover,
+    .certificate-preview::before,
+    .certificate-card:hover .certificate-preview::before {
+      transition: none;
+      animation: none;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const certificateCards = document.querySelectorAll('.certificate-card');
+    const modal = document.getElementById('certificate-modal');
+    const modalImage = document.getElementById('modal-image') as HTMLImageElement;
+    const modalTitle = document.getElementById('modal-title');
+    const modalIssuer = document.getElementById('modal-issuer');
+    const modalDate = document.getElementById('modal-date');
+    const closeModal = document.getElementById('close-modal');
+    
+    // Data mapping dari sertifikat untuk digunakan di modal
+    const certificateData: {[key: string]: {title: string, issuer: string, date: string, imageSrc: string}} = {
+      'cert-1': {
+        title: 'OSIS Certification',
+        issuer: 'Organisasi Siswa Intra Sekolah',
+        date: '2022',
+        imageSrc: '/images/osis.png'
+      },
+      'cert-2': {
+        title: 'Head of AI Division',
+        issuer: 'Organisasi Ekstrakurikuler Jurusan',
+        date: '2023',
+        imageSrc: '/images/orens.png'
+      },
+      'cert-3': {
+        title: 'OPN Certification',
+        issuer: 'Piagam Olimpiade Bidang Bahasa Inggris',
+        date: '2022',
+        imageSrc: '/images/opn.jpg'
+      },
+      'cert-4': {
+        title: 'Internship Certificate',
+        issuer: 'PT. Implementasi Teknologi Digital',
+        date: '2024',
+        imageSrc: '/images/magang.jpg'
+      }
+    };
+    
+    // Fungsi untuk menampilkan modal
+    function showCertificateModal(certificateId: string) {
+      const certificate = certificateData[certificateId];
+      
+      if (certificate && modalImage && modalTitle && modalIssuer && modalDate) {
+        modalImage.src = certificate.imageSrc;
+        modalImage.alt = certificate.title;
+        modalTitle.textContent = certificate.title;
+        modalIssuer.textContent = certificate.issuer;
+        modalDate.textContent = certificate.date;
+        
+        // Tampilkan modal dengan animasi
+        if (modal) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Mencegah scrolling
+        }
+      }
+    }
+    
+    // Fungsi untuk menutup modal
+    function closeModalFunction() {
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Mengembalikan scrolling
+      }
+    }
+    
+    // Event listener untuk kartu sertifikat
+    certificateCards.forEach(card => {
+      card.addEventListener('click', function(this: HTMLElement) {
+        const certificateId = this.getAttribute('data-certificate-id');
+        if (certificateId) {
+          showCertificateModal(certificateId);
+        }
+      });
+    });
+    
+    // Event listener untuk tombol tutup
+    if (closeModal) {
+      closeModal.addEventListener('click', closeModalFunction);
+    }
+    
+    // Tutup modal dengan klik di luar content
+    if (modal) {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModalFunction();
+        }
+      });
+    }
+    
+    // Tutup modal dengan tombol ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+        closeModalFunction();
+      }
+    });
+    
+    // Progressive loading untuk gambar sertifikat
+    const certificateImages = document.querySelectorAll('.certificate-preview img');
+    
+    certificateImages.forEach(img => {
+      if (img instanceof HTMLImageElement) {
+        const lowQualitySrc = img.src.replace(/\.(jpg|png)$/, '-thumb.$1');
+        
+        // Buat image baru untuk preload
+        const highResImage = new Image();
+        highResImage.src = img.src;
+        
+        // Ketika gambar kualitas tinggi sudah dimuat
+        highResImage.onload = () => {
+          img.classList.add('loaded');
+        };
+      }
+    });
+  });
+</script> 

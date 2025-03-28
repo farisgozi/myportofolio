@@ -1,0 +1,590 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Modern color palette with vibrant colors */
+    --background: 220 25% 97%;
+    --foreground: 225 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 225 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 25% 15%;
+
+    /* Vibrant purple hue for primary color */
+    --primary: 260 100% 60%;
+    --primary-foreground: 210 40% 98%;
+    --primary-50: 260 100% 97%;
+    --primary-100: 260 100% 94%;
+    --primary-200: 260 100% 88%;
+    --primary-300: 260 100% 80%;
+    --primary-400: 260 100% 70%;
+    --primary-500: 260 100% 60%;
+    --primary-600: 260 100% 50%;
+    --primary-700: 260 100% 40%;
+    --primary-800: 260 100% 30%;
+    --primary-900: 260 100% 20%;
+    --primary-950: 260 100% 10%;
+
+    /* Teal as secondary color for contrast */
+    --secondary: 175 85% 40%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-50: 175 85% 96%;
+    --secondary-100: 175 85% 90%;
+    --secondary-200: 175 85% 80%;
+    --secondary-300: 175 85% 70%;
+    --secondary-400: 175 85% 60%;
+    --secondary-500: 175 85% 50%;
+    --secondary-600: 175 85% 40%;
+    --secondary-700: 175 85% 30%;
+    --secondary-800: 175 85% 20%;
+    --secondary-900: 175 85% 10%;
+    --secondary-950: 175 85% 5%;
+
+    /* Accent color - orange */
+    --accent: 32 100% 55%;
+    --accent-foreground: 0 0% 100%;
+    --accent-50: 32 100% 96%;
+    --accent-100: 32 100% 90%;
+    --accent-200: 32 100% 80%;
+    --accent-300: 32 100% 70%;
+    --accent-400: 32 100% 60%;
+    --accent-500: 32 100% 50%;
+    --accent-600: 32 100% 40%;
+    --accent-700: 32 100% 30%;
+    --accent-800: 32 100% 20%;
+    --accent-900: 32 100% 10%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 260 100% 60%;
+
+    --radius: 0.75rem;
+
+    /* RGB versions for use in rgba functions */
+    --primary-rgb: 157, 78, 221;
+    --secondary-rgb: 94, 96, 206;
+    --accent-rgb: 116, 193, 143;
+    
+    /* Animation speeds */
+    --animation-slow: 700ms;
+    --animation-medium: 500ms;
+    --animation-fast: 300ms;
+    
+    /* Responsive breakpoints for scaling elements */
+    --scale-factor: 1;
+    --padding-factor: 1;
+
+    /* Aplikasikan font utama ke seluruh halaman */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    --font-heading: 'Poppins', var(--font-sans);
+  }
+
+  .dark {
+    --background: 225 30% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 225 30% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 225 30% 6%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Lighter purple in dark mode */
+    --primary: 260 90% 70%;
+    --primary-foreground: 0 0% 100%;
+    --primary-50: 260 90% 95%;
+    --primary-100: 260 90% 90%;
+    --primary-200: 260 90% 80%;
+    --primary-300: 260 90% 70%;
+    --primary-400: 260 90% 60%;
+    --primary-500: 260 90% 50%;
+    --primary-600: 260 90% 40%;
+    --primary-700: 260 90% 30%;
+    --primary-800: 260 90% 20%;
+    --primary-900: 260 90% 10%;
+    --primary-950: 260 90% 5%;
+
+    /* Brighter teal in dark mode */
+    --secondary: 175 90% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-50: 175 90% 95%;
+    --secondary-100: 175 90% 90%;
+    --secondary-200: 175 90% 80%;
+    --secondary-300: 175 90% 70%;
+    --secondary-400: 175 90% 60%;
+    --secondary-500: 175 90% 50%;
+    --secondary-600: 175 90% 40%;
+    --secondary-700: 175 90% 30%;
+    --secondary-800: 175 90% 20%;
+    --secondary-900: 175 90% 10%;
+    
+    /* Brighter accent in dark mode */
+    --accent: 32 95% 60%;
+    --accent-foreground: 0 0% 0%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 260 90% 70%;
+
+    /* RGB versions for use in rgba functions */
+    --primary-rgb: 192, 132, 252;
+    --secondary-rgb: 45, 212, 191;
+    --accent-rgb: 251, 191, 36;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border transition-all duration-300;
+  }
+  
+  body {
+    @apply bg-background text-foreground min-h-screen overflow-x-hidden;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-image: 
+      radial-gradient(circle at 20% 30%, hsl(var(--primary-100)/0.3) 0%, transparent 20%),
+      radial-gradient(circle at 80% 70%, hsl(var(--secondary-100)/0.3) 0%, transparent 20%),
+      radial-gradient(circle at 50% 50%, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+    background-attachment: fixed;
+    font-family: var(--font-sans);
+  }
+  
+  .dark body {
+    background-image: 
+      radial-gradient(circle at 20% 30%, hsl(var(--primary-900)/0.5) 0%, transparent 25%),
+      radial-gradient(circle at 80% 70%, hsl(var(--secondary-900)/0.5) 0%, transparent 25%),
+      radial-gradient(circle at 50% 50%, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+    background-attachment: fixed;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: 80px; /* Adjusted for fixed header */
+  }
+  
+  /* Modern scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary-300));
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-500));
+  }
+  
+  /* Text gradient */
+  .text-gradient {
+    background: linear-gradient(90deg, rgb(var(--primary-rgb)) 0%, rgb(var(--secondary-rgb)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+  
+  /* 3D Transforms and Perspective */
+  .transform-style-3d {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+  }
+  
+  /* Improved 3D perspective on mobile */
+  @media (max-width: 768px) {
+    .perspective-1000 {
+      perspective: 800px;
+      -webkit-perspective: 800px;
+    }
+    
+    .transform-style-3d {
+      will-change: transform;
+    }
+    
+    /* Scaled down animations for mobile */
+    :root {
+      --scale-factor: 0.8;
+      --padding-factor: 0.75;
+    }
+    
+    /* Adjust animation distance for small screens */
+    @keyframes fade-in-up {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fade-in-left {
+      0% { opacity: 0; transform: translateX(-20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes fade-in-right {
+      0% { opacity: 0; transform: translateX(20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+  }
+  
+  /* Optimize 3D on tablet */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    :root {
+      --scale-factor: 0.9;
+      --padding-factor: 0.85;
+    }
+  }
+  
+  /* Enhanced parallax effects */
+  .parallax-container {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .parallax-element {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+  }
+  
+  /* Improved for mobile touch interactions */
+  @media (hover: hover) {
+    .hover-3d:hover {
+      transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+    }
+  }
+  
+  /* Card with hover effect that's more performant */
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform, box-shadow;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 40px -10px rgba(var(--primary-rgb), 0.2);
+  }
+  
+  /* Button with proper mobile interaction */
+  .btn-primary {
+    @apply px-6 py-3 bg-primary-600 text-white rounded-lg shadow-lg font-medium hover:bg-primary-700 transition-all duration-300;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  /* Scroll trigger detection helper */
+  [data-scroll] {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: calc(var(--delay, 0) * 1ms);
+  }
+  
+  [data-animate="fade-in-up"] {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  [data-animate="fade-in-left"] {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  
+  [data-animate="fade-in-right"] {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  
+  [data-animate].in-view {
+    opacity: 1;
+    transform: translate(0);
+  }
+  
+  /* Responsive spacing customization */
+  .responsive-spacing {
+    padding: calc(1rem * var(--padding-factor));
+  }
+  
+  /* Performance optimization classes */
+  .hardware-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Advanced glow effects */
+.glow-text {
+  text-shadow: 0 0 5px currentColor, 0 0 10px rgba(var(--primary-rgb), 0.3);
+}
+
+.glow-effect {
+  box-shadow: 0 0 15px 5px rgba(var(--primary-rgb), 0.2), 0 0 5px 2px rgba(var(--primary-rgb), 0.1);
+}
+
+/* Mobile Optimization - Improved Typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px; /* Slightly smaller base font size for mobile */
+  }
+  
+  h1 {
+    font-size: 2.25rem !important; /* ~32px */
+  }
+  
+  h2 {
+    font-size: 1.75rem !important; /* ~24px */
+  }
+  
+  h3 {
+    font-size: 1.35rem !important; /* ~20px */
+  }
+  
+  p, li {
+    font-size: 1rem !important; /* ~16px */
+  }
+  
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  /* Increase tap target sizes for better mobile usability */
+  button, 
+  .btn-primary,
+  a.btn-primary,
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Make links and buttons more touch-friendly */
+  nav a, 
+  .nav-link,
+  footer a {
+    padding: 0.5rem 0.75rem;
+    display: inline-block;
+  }
+  
+  /* Adjust spacing for touch scrolling */
+  section {
+    scroll-margin-top: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Low-end device optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-float,
+  .animate-float-reverse,
+  .animate-pulse {
+    animation: none !important;
+  }
+  
+  .parallax-element {
+    transform: none !important;
+  }
+}
+
+/* Loading optimization */
+.progressive-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.progressive-image img.preview {
+  filter: blur(10px);
+  transition: filter 0.3s ease-in-out;
+}
+
+.progressive-image img.reveal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.progressive-image img.reveal.loaded {
+  opacity: 1;
+}
+
+/* Safe area insets for modern mobile browsers */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left, 0);
+    padding-right: env(safe-area-inset-right, 0);
+  }
+  
+  .fixed-bottom,
+  .fixed-top {
+    padding-left: env(safe-area-inset-left, 0);
+    padding-right: env(safe-area-inset-right, 0);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    padding-top: env(safe-area-inset-top, 0);
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  /* Hide non-essential elements when printing */
+  nav, footer, button, .btn-primary, video, audio, .no-print {
+    display: none !important;
+  }
+  
+  /* Ensure images are printed well */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Ensure URLs are printed */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  /* Optimize page breaks */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+  
+  table, figure {
+    page-break-inside: avoid;
+  }
+}
+
+/* Project Card Thumbnail Styles */
+.project-media-container {
+  min-height: 200px;
+  background-color: rgba(var(--primary-rgb), 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-media-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-media-container img {
+  transform: scale(1.05);
+}
+
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Global settings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Kurangi penggunaan will-change untuk mencegah memory consumption yang tinggi */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.scroll-animate.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll progress-based reveal */
+.reveal-on-scroll {
+  --scroll-percent: 0%;
+  opacity: calc(var(--scroll-percent) * 0.01);
+  transform: translateY(calc((1 - var(--scroll-percent) * 0.01) * 50px));
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hardware acceleration hanya untuk komponen utama yang sangat membutuhkan */
+.critical-animation {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+/* Enhanced parallax mouse tracking */
+.parallax-mouse-tracking {
+  transition: transform 0.05s ease-out;
+}
+
+/* Optimasi untuk animasi tilt (gunakan hanya untuk elemen yang benar-benar membutuhkan) */
+.tilt-effect {
+  transition: transform 0.2s ease-out;
+}
+
+/* Animasi parallax scroll (tanpa will-change) */
+.parallax-scroll {
+  transition: transform 0.1s linear;
+}
+

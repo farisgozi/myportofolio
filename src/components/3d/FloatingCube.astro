@@ -1,0 +1,180 @@
+---
+// Floating Cube Component - Elemen 3D berbentuk kubus yang melayang dan berputar
+interface Props {
+  position?: 'top-right' | 'bottom-left' | 'custom';
+  customClass?: string;
+  customStyle?: string;
+  size?: number;
+}
+
+const { 
+  position = 'top-right', 
+  customClass = '', 
+  customStyle = '',
+  size = 80
+} = Astro.props;
+
+// Menentukan class posisi
+const positionClass = position !== 'custom' ? `floating-cube ${position}` : 'floating-cube';
+---
+
+<div class={`${positionClass} ${customClass}`} style={customStyle}>
+  <div class="cube-face front"></div>
+  <div class="cube-face back"></div>
+  <div class="cube-face right"></div>
+  <div class="cube-face left"></div>
+  <div class="cube-face top"></div>
+  <div class="cube-face bottom"></div>
+</div>
+
+<style define:vars={{ size: `${size}px`, half: `${size/2}px` }}>
+  .floating-cube {
+    width: var(--size);
+    height: var(--size);
+  }
+  
+  .cube-face.front {
+    transform: translateZ(var(--half));
+  }
+  
+  .cube-face.back {
+    transform: rotateY(180deg) translateZ(var(--half));
+  }
+  
+  .cube-face.right {
+    transform: rotateY(90deg) translateZ(var(--half));
+  }
+  
+  .cube-face.left {
+    transform: rotateY(-90deg) translateZ(var(--half));
+  }
+  
+  .cube-face.top {
+    transform: rotateX(90deg) translateZ(var(--half));
+  }
+  
+  .cube-face.bottom {
+    transform: rotateX(-90deg) translateZ(var(--half));
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .floating-cube {
+      animation: cube-rotate 30s infinite linear !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cubes = document.querySelectorAll('.floating-cube');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isLowPowerDevice = navigator.hardwareConcurrency < 4;
+    
+    // Buat animasi lebih sederhana untuk perangkat dengan spesifikasi rendah
+    const animationQuality = isLowPowerDevice ? 'low' : 'high';
+    
+    cubes.forEach((cube) => {
+      if (!(cube instanceof HTMLElement)) return;
+      
+      // Acak arah dan kecepatan rotasi untuk setiap kubus
+      const rotateXSpeed = Math.random() * 0.1 + 0.05;
+      const rotateYSpeed = Math.random() * 0.1 + 0.05;
+      const rotateZSpeed = Math.random() * 0.05;
+      
+      // Status rotasi awal
+      let rotateX = Math.random() * 360;
+      let rotateY = Math.random() * 360;
+      let rotateZ = Math.random() * 360;
+      
+      // Variabel untuk throttling
+      let ticking = false;
+      let animationFrameId: number | null = null;
+      
+      // Fungsi animasi yang dioptimalkan
+      const animate = () => {
+        // Perbarui rotasi
+        rotateX += rotateXSpeed;
+        rotateY += rotateYSpeed;
+        rotateZ += rotateZSpeed;
+        
+        // Terapkan rotasi baru
+        cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+        
+        // Lanjutkan animasi jika tidak ada reduced motion preference
+        animationFrameId = requestAnimationFrame(animate);
+      };
+      
+      // Fungsi mouse move dengan throttling
+      const handleMouseMove = (e: MouseEvent) => {
+        if (prefersReducedMotion) return;
+        if (ticking) return;
+        
+        ticking = true;
+        
+        requestAnimationFrame(() => {
+          const mouseX = e.clientX / window.innerWidth - 0.5;
+          const mouseY = e.clientY / window.innerHeight - 0.5;
+          
+          // Terapkan efek parallax pada kubus
+          const parallaxX = mouseX * 20;
+          const parallaxY = mouseY * 20;
+          
+          cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) translate(${parallaxX}px, ${parallaxY}px)`;
+          
+          ticking = false;
+        });
+      };
+      
+      // Hanya mulai animasi kompleks jika tidak ada reduced motion dan performa baik
+      if (!prefersReducedMotion && animationQuality === 'high') {
+        // Mulai animasi
+        animate();
+        
+        // Tambahkan efek hover untuk interaksi
+        cube.addEventListener('mouseover', () => {
+          cube.style.transition = 'transform 0.5s ease';
+          cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(1.2)`;
+        });
+        
+        cube.addEventListener('mouseout', () => {
+          cube.style.transition = 'transform 0.5s ease';
+          cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(1)`;
+          
+          // Hapus transisi setelah selesai untuk animasi yang mulus
+          setTimeout(() => {
+            cube.style.transition = 'none';
+          }, 500);
+        });
+        
+        // Tambahkan efek parallax pada pergerakan mouse dengan throttling
+        document.addEventListener('mousemove', handleMouseMove, { passive: true });
+      } else {
+        // Untuk reduced motion atau perangkat low-end, gunakan animasi CSS standar
+        cube.style.animation = 'cube-rotate 30s infinite linear';
+      }
+      
+      // Clean up
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+      };
+    });
+    
+    // Deteksi perubahan preferensi reduced motion
+    window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', e => {
+      cubes.forEach((cube) => {
+        if (!(cube instanceof HTMLElement)) return;
+        
+        if (e.matches) {
+          // Gunakan animasi CSS sederhana
+          cube.style.animation = 'cube-rotate 30s infinite linear';
+        } else if (animationQuality === 'high') {
+          // Kembali ke animasi JavaScript
+          cube.style.animation = 'none';
+        }
+      });
+    });
+  });
+</script> 
