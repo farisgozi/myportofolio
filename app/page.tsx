@@ -19,7 +19,7 @@ import {
   ArrowUpRight,
   MousePointer,
 } from "lucide-react"
-import { motion, useScroll, useSpring, useInView, AnimatePresence } from "framer-motion"
+import { motion, useScroll, useSpring, useInView, AnimatePresence, type Variants } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import ProfilePhoto from "../components/ProfilePhoto"
@@ -84,7 +84,7 @@ function CustomCursor() {
     }
   }, [])
 
-  const cursorVariants = {
+  const cursorVariants: Variants = {
     default: {
       x: mousePosition.x - 16,
       y: mousePosition.y - 16,
@@ -118,7 +118,7 @@ function ProjectCard({ title, thumbnail, videoUrl, index }: ProjectCardProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: false, amount: 0.3 })
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -132,12 +132,12 @@ function ProjectCard({ title, thumbnail, videoUrl, index }: ProjectCardProps) {
     },
   }
 
-  const imageVariants = {
+  const imageVariants: Variants = {
     rest: { scale: 1 },
     hover: { scale: 1.05 },
   }
 
-  const buttonVariants = {
+  const buttonVariants: Variants = {
     rest: { opacity: 0, y: 10 },
     hover: { opacity: 1, y: 0 },
   }
@@ -227,7 +227,7 @@ function CertificateCard({ title, issuer, date, image, index }: CertificateCardP
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: false, amount: 0.3 })
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -395,7 +395,7 @@ export default function Home() {
     { name: "Contact", href: "#contact" },
   ]
 
-  const headerVariants = {
+  const headerVariants: Variants = {
     hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
@@ -408,7 +408,7 @@ export default function Home() {
     },
   }
 
-  const navItemVariants = {
+  const navItemVariants: Variants = {
     hidden: { opacity: 0, y: -10 },
     visible: (i: number) => ({
       opacity: 1,
@@ -421,7 +421,7 @@ export default function Home() {
     }),
   }
 
-  const sectionVariants = {
+  const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: (delay = 0) => ({
       opacity: 1,
