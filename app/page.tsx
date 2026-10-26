@@ -544,9 +544,9 @@ export default function Home() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8, duration: 0.6 }}
                 >
-                  Mahasiswa Teknik Informatika Universitas Mercu Buana (Beasiswa Unggulan) sekaligus Google Student
-                  Ambassador Class of 2026. Berfokus pada AI, backend development, dan solusi perangkat lunak yang
-                  berdampak.
+                  Mahasiswa Sistem Informasi yang senang membangun perangkat lunak. Minat utama saya di kecerdasan
+                  buatan, backend, dan pengembangan mobile—serta terus belajar teknologi baru lewat proyek dan
+                  eksperimen.
                 </motion.p>
 
                 <motion.div
@@ -645,9 +645,9 @@ export default function Home() {
                     transition={{ delay: 0.2, duration: 0.5 }}
                   >
                     <h4 className="font-semibold text-gray-800 text-lg">Universitas Mercu Buana</h4>
-                    <p className="text-gray-700">Teknik Informatika / Computer Science</p>
+                    <p className="text-gray-700">Sistem Informasi</p>
                     <div className="flex justify-between mt-2">
-                      <p className="text-sm text-gray-600">Jakarta Barat</p>
+                      <p className="text-sm text-gray-600">Jakarta Pusat</p>
                       <p className="text-sm text-gray-600">2025 - Sekarang</p>
                     </div>
                   </motion.div>
@@ -758,7 +758,7 @@ export default function Home() {
                   company: "Google Student Ambassador Program",
                   role: "Google Student Ambassador — Class of 2026",
                   location: "Indonesia",
-                  period: "Oktober 2026 - Januari 2027",
+                  period: "Maret 2026 - September 2026",
                   tasks: [
                     "Terpilih dari lebih dari 81.000 mahasiswa di seluruh Indonesia untuk program resmi Google.",
                     "Memimpin dan mengadvokasi adopsi Google AI (Gemini) di komunitas kampus Universitas Mercu Buana.",

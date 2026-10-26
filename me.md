@@ -31,8 +31,8 @@ Membimbing anggota dalam penerapan AI pada bidang computer vision, otomasi, dan 
 Mengembangkan proyek berbasis AI untuk meningkatkan pemahaman dan keterampilan anggota dalam teknologi AI.
 PENDIDIKAN
 Universitas Mercu Buana
-Teknik Informatika / Computer Science
-Jakarta Barat
+Sistem Informasi
+Jakarta Pusat
 2025 - Sekarang
 SMK Prestasi Prima
 Rekayasa Perangkat Lunak
