@@ -13,11 +13,6 @@ const nextConfig = {
   // output: 'export',
   // distDir: 'dist',
   
-  // Optimization untuk development
-  experimental: {
-    optimizeCss: true,
-  },
-  
   // Webpack optimizations
   webpack: (config, { dev, isServer }) => {
     if (dev && !isServer) {

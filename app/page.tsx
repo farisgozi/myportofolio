@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, type ReactNode } from "react"
 import {
   Mail,
   Phone,
@@ -24,25 +24,50 @@ import Image from "next/image"
 import Link from "next/link"
 import ProfilePhoto from "../components/ProfilePhoto"
 
+type ProjectCardProps = {
+  title: string
+  thumbnail: string
+  videoUrl: string
+  index: number
+}
+
+type CertificateCardProps = {
+  title: string
+  issuer: string
+  date: string
+  image: string
+  index: number
+}
+
+type SectionTitleProps = {
+  icon: ReactNode
+  title: string
+}
+
 // Custom cursor component
 function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
 
   useEffect(() => {
-    const mouseMove = (e) => {
+    const mouseMove = (e: MouseEvent) => {
       setMousePosition({
         x: e.clientX,
         y: e.clientY,
       })
     }
 
-    const mouseOver = (e) => {
+    const mouseOver = (e: MouseEvent) => {
+      const target = e.target
+      if (!(target instanceof Element)) {
+        setIsHovering(false)
+        return
+      }
       if (
-        e.target.tagName === "A" ||
-        e.target.tagName === "BUTTON" ||
-        e.target.closest("a") ||
-        e.target.closest("button")
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        target.closest("a") ||
+        target.closest("button")
       ) {
         setIsHovering(true)
       } else {
@@ -88,9 +113,9 @@ function CustomCursor() {
   )
 }
 
-function ProjectCard({ title, thumbnail, videoUrl, index }) {
+function ProjectCard({ title, thumbnail, videoUrl, index }: ProjectCardProps) {
   const [showVideo, setShowVideo] = useState(false)
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: false, amount: 0.3 })
 
   const cardVariants = {
@@ -197,9 +222,9 @@ function ProjectCard({ title, thumbnail, videoUrl, index }) {
   )
 }
 
-function CertificateCard({ title, issuer, date, image, index }) {
+function CertificateCard({ title, issuer, date, image, index }: CertificateCardProps) {
   const [showImage, setShowImage] = useState(false)
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: false, amount: 0.3 })
 
   const cardVariants = {
@@ -280,7 +305,7 @@ function CertificateCard({ title, issuer, date, image, index }) {
   )
 }
 
-function SectionTitle({ icon, title }) {
+function SectionTitle({ icon, title }: SectionTitleProps) {
   return (
     <div className="flex items-center mb-5">
       <div className="w-8 h-8 rounded-full bg-[#4BBCD7]/20 flex items-center justify-center mr-3">{icon}</div>
@@ -291,7 +316,7 @@ function SectionTitle({ icon, title }) {
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const menuRef = useRef(null)
+  const menuRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 })
 
@@ -350,8 +375,8 @@ export default function Home() {
   ]
 
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && event.target instanceof Node && !menuRef.current.contains(event.target)) {
         setMobileMenuOpen(false)
       }
     }
@@ -385,7 +410,7 @@ export default function Home() {
 
   const navItemVariants = {
     hidden: { opacity: 0, y: -10 },
-    visible: (i) => ({
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
