@@ -4,13 +4,36 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   images: {
     unoptimized: true,
   },
-  output: 'export',
-  distDir: 'dist'
+  // Remove static export for development
+  // output: 'export',
+  // distDir: 'dist',
+  
+  // Optimization untuk development
+  experimental: {
+    optimizeCss: true,
+  },
+  
+  // Webpack optimizations
+  webpack: (config, { dev, isServer }) => {
+    if (dev && !isServer) {
+      config.watchOptions = {
+        poll: 1000,
+        aggregateTimeout: 300,
+        ignored: [
+          '**/node_modules',
+          '**/.git',
+          '**/.next',
+          '**/dist'
+        ]
+      }
+    }
+    return config
+  }
 }
 
 export default nextConfig

@@ -1,47 +1,91 @@
-# Astro Starter Kit: Minimal
+# My Portfolio - Next.js Project
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Portfolio website built with Next.js 15, React 19, TypeScript, and Tailwind CSS.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> 🚀 **Getting Started?** Follow the setup instructions below!
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+This Next.js project uses the App Router with the following structure:
 
 ```text
 /
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+├── public/           # Static assets (images, icons, etc.)
+├── app/              # App Router pages and layouts
+│   ├── layout.tsx    # Root layout
+│   ├── page.tsx      # Home page
+│   └── globals.css   # Global styles
+├── components/       # Reusable React components
+│   └── ui/          # UI components (shadcn/ui)
+├── lib/             # Utility functions
+└── hooks/           # Custom React hooks
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+This project uses:
+- **Next.js 15** with App Router
+- **React 19** for the latest React features
+- **TypeScript** for type safety
+- **Tailwind CSS** for styling
+- **shadcn/ui** for UI components
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 🛠️ Setup & Development
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Prerequisites
+- Node.js 18.17 or later
+- pnpm (recommended) or npm
 
-## 🧞 Commands
+### Installation & Running
 
-All commands are run from the root of the project, from a terminal:
+1. **Install dependencies:**
+   ```bash
+   pnpm install
+   # or
+   npm install
+   ```
+
+2. **Start development server:**
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   ```
+   The app will be available at `http://localhost:3000`
+
+### Available Commands
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `pnpm install`            | Install dependencies                             |
+| `pnpm dev`                | Start development server at `localhost:3000`    |
+| `pnpm build`              | Build production version to `./.next/`          |
+| `pnpm start`              | Start production server                          |
+| `pnpm lint`               | Run ESLint for code quality checks              |
 
-## 👀 Want to learn more?
+## 🎨 Tech Stack
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Framework:** Next.js 15 with App Router
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **UI Components:** shadcn/ui + Radix UI
+- **Animations:** Framer Motion
+- **Package Manager:** pnpm
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd myportofolio
+
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+```
+
+## 📚 Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [shadcn/ui](https://ui.shadcn.com/)

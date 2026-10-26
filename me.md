@@ -30,11 +30,17 @@ Mengajar konsep dasar kecerdasan buatan dan implementasi logika AI menggunakan P
 Membimbing anggota dalam penerapan AI pada bidang computer vision, otomasi, dan pemrosesan bahasa dasar.
 Mengembangkan proyek berbasis AI untuk meningkatkan pemahaman dan keterampilan anggota dalam teknologi AI.
 PENDIDIKAN
+Universitas Mercu Buana
+Teknik Informatika / Computer Science
+Jakarta Barat
+2025 - Sekarang
 SMK Prestasi Prima
 Rekayasa Perangkat Lunak
 Jakarta Timur
 2022 - 2025
 PRESTASI
+Beasiswa Unggulan — Full 4 Tahun (Universitas Mercu Buana, 2025)
+Google Student Ambassador — Class of 2026
 Olimpiade Pelajar Nasional
 Peraih Medali Emas Bidang Bahasa Inggris
 Jakarta

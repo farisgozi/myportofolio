@@ -318,6 +318,12 @@ export default function Home() {
 
   const certificates = [
     {
+      title: "Google Student Ambassador — Class of 2026",
+      issuer: "Google · Certificate of Participation",
+      date: "2026",
+      image: "GSA.jpeg",
+    },
+    {
       title: "Piagam Olimpiade Bidang Bahasa Inggris",
       issuer: "OPN Certification",
       date: "2022",
@@ -513,8 +519,9 @@ export default function Home() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8, duration: 0.6 }}
                 >
-                  Saya adalah seorang pengembang perangkat lunak yang berfokus pada penguasaan dan pengembangan
-                  keterampilan pemrograman. Tertarik dengan perkembangan Kecerdasan Buatan dan Backend Development.
+                  Mahasiswa Teknik Informatika Universitas Mercu Buana (Beasiswa Unggulan) sekaligus Google Student
+                  Ambassador Class of 2026. Berfokus pada AI, backend development, dan solusi perangkat lunak yang
+                  berdampak.
                 </motion.p>
 
                 <motion.div
@@ -605,19 +612,34 @@ export default function Home() {
               >
                 <SectionTitle icon={<School size={16} className="text-[#4BBCD7]" />} title="PENDIDIKAN" />
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                >
-                  <h4 className="font-semibold text-gray-800 text-lg">SMK Prestasi Prima</h4>
-                  <p className="text-gray-700">Rekayasa Perangkat Lunak</p>
-                  <div className="flex justify-between mt-2">
-                    <p className="text-sm text-gray-600">Jakarta Timur</p>
-                    <p className="text-sm text-gray-600">2022 - 2025</p>
-                  </div>
-                </motion.div>
+                <div className="space-y-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                  >
+                    <h4 className="font-semibold text-gray-800 text-lg">Universitas Mercu Buana</h4>
+                    <p className="text-gray-700">Teknik Informatika / Computer Science</p>
+                    <div className="flex justify-between mt-2">
+                      <p className="text-sm text-gray-600">Jakarta Barat</p>
+                      <p className="text-sm text-gray-600">2025 - Sekarang</p>
+                    </div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ delay: 0.25, duration: 0.5 }}
+                  >
+                    <h4 className="font-semibold text-gray-800 text-lg">SMK Prestasi Prima</h4>
+                    <p className="text-gray-700">Rekayasa Perangkat Lunak</p>
+                    <div className="flex justify-between mt-2">
+                      <p className="text-sm text-gray-600">Jakarta Timur</p>
+                      <p className="text-sm text-gray-600">2022 - 2025</p>
+                    </div>
+                  </motion.div>
+                </div>
               </motion.div>
 
               <motion.div
@@ -630,23 +652,64 @@ export default function Home() {
               >
                 <SectionTitle icon={<Award size={16} className="text-[#4BBCD7]" />} title="PRESTASI" />
 
-                <motion.div
-                  className="bg-gradient-to-r from-[#4BBCD7]/10 to-transparent p-4 rounded-xl"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <div>
-                    <h4 className="font-semibold text-gray-800 text-lg">Olimpiade Pelajar Nasional</h4>
-                    <p className="text-gray-700">Peraih Medali Emas Bidang Bahasa Inggris</p>
-                    <div className="flex justify-between items-center mt-2">
-                      <span className="text-sm text-gray-600">Jakarta</span>
-                      <span className="text-sm text-gray-600">Oktober 2022</span>
+                <div className="space-y-4">
+                  <motion.div
+                    className="bg-gradient-to-r from-[#4BBCD7]/10 to-transparent p-4 rounded-xl"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ delay: 0.25, duration: 0.5 }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div>
+                      <h4 className="font-semibold text-gray-800 text-lg">Beasiswa Unggulan — Full 4 Tahun</h4>
+                      <p className="text-gray-700">
+                        Beasiswa penuh biaya kuliah (100%) selama 4 tahun studi S1 di Universitas Mercu Buana.
+                      </p>
+                      <div className="flex justify-between items-center mt-2">
+                        <span className="text-sm text-gray-600">Universitas Mercu Buana</span>
+                        <span className="text-sm text-gray-600">2025</span>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                  <motion.div
+                    className="bg-gradient-to-r from-[#4BBCD7]/10 to-transparent p-4 rounded-xl"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ delay: 0.3, duration: 0.5 }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div>
+                      <h4 className="font-semibold text-gray-800 text-lg">Google Student Ambassador</h4>
+                      <p className="text-gray-700">
+                        Terpilih dari 81.000+ mahasiswa di Indonesia; mengadvokasi adopsi Google AI di kampus (Class
+                        of 2026).
+                      </p>
+                      <div className="flex justify-between items-center mt-2">
+                        <span className="text-sm text-gray-600">Google</span>
+                        <span className="text-sm text-gray-600">2026</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                  <motion.div
+                    className="bg-gradient-to-r from-[#4BBCD7]/10 to-transparent p-4 rounded-xl"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ delay: 0.35, duration: 0.5 }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div>
+                      <h4 className="font-semibold text-gray-800 text-lg">Olimpiade Pelajar Nasional</h4>
+                      <p className="text-gray-700">Peraih Medali Emas Bidang Bahasa Inggris</p>
+                      <div className="flex justify-between items-center mt-2">
+                        <span className="text-sm text-gray-600">Jakarta</span>
+                        <span className="text-sm text-gray-600">Oktober 2022</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -666,6 +729,17 @@ export default function Home() {
 
             <div className="space-y-10">
               {[
+                {
+                  company: "Google Student Ambassador Program",
+                  role: "Google Student Ambassador — Class of 2026",
+                  location: "Indonesia",
+                  period: "Oktober 2026 - Januari 2027",
+                  tasks: [
+                    "Terpilih dari lebih dari 81.000 mahasiswa di seluruh Indonesia untuk program resmi Google.",
+                    "Memimpin dan mengadvokasi adopsi Google AI (Gemini) di komunitas kampus Universitas Mercu Buana.",
+                    "Berbagi konten edukatif, membangun komunitas, dan mendorong literasi AI di lingkungan perguruan tinggi.",
+                  ],
+                },
                 {
                   company: "PT. Implementasi Teknologi Digital",
                   role: "Software Developer Internship",
@@ -893,7 +967,11 @@ export default function Home() {
                   <div className="flex gap-4">
                     {[
                       { icon: <Github size={20} />, href: "https://github.com/farisgozi", label: "GitHub" },
-                      { icon: <Linkedin size={20} />, href: "www.linkedin.com/in/muhammad-faris-gozi-a297a62a1", label: "LinkedIn" },
+                      {
+                        icon: <Linkedin size={20} />,
+                        href: "https://www.linkedin.com/in/muhammad-faris-gozi-a297a62a1/",
+                        label: "LinkedIn",
+                      },
                     ].map((social, index) => (
                       <motion.a
                         key={index}
@@ -922,7 +1000,7 @@ export default function Home() {
         transition={{ delay: 1.8, duration: 0.5 }}
       >
         <div className="max-w-6xl mx-auto px-6">
-          <p>© 2025 Muhammad Faris Gozi. All rights reserved.</p>
+          <p>© 2026 Muhammad Faris Gozi. All rights reserved.</p>
         </div>
       </motion.footer>
     </main>
