@@ -6,6 +6,7 @@ import {
   Phone,
   MapPin,
   Github,
+  Instagram,
   Linkedin,
   Award,
   Briefcase,
@@ -997,9 +998,14 @@ export default function Home() {
                         href: "https://www.linkedin.com/in/muhammad-faris-gozi-a297a62a1/",
                         label: "LinkedIn",
                       },
-                    ].map((social, index) => (
+                      {
+                        icon: <Instagram size={20} />,
+                        href: "https://www.instagram.com/yeoziy/",
+                        label: "Instagram",
+                      },
+                    ].map((social) => (
                       <motion.a
-                        key={index}
+                        key={social.label}
                         href={social.href}
                         className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-[#4BBCD7] hover:bg-[#4BBCD7] hover:text-white transition-colors"
                         whileHover={{ scale: 1.05 }}
