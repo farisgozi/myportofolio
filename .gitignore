@@ -6,6 +6,12 @@
 # next.js
 /.next/
 /out/
+/dist
+
+# static scroll demo (bukan bagian Next.js app)
+/index.html
+/script.js
+/style.css
 
 # production
 /build
